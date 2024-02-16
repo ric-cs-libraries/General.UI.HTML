@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TESTS", "TESTS", "{8786168A-A694-4E30-B199-3244C07467C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "General.UI.HTML.Basics.UnitTests", "TESTS\General.UI.HTML.Basics.UnitTests\General.UI.HTML.Basics.UnitTests.csproj", "{BE33E8E4-8887-435C-B2CF-14942F9C6608}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_SRC", "_SRC", "{56DB61D0-44F3-4338-B485-BDF648794EC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "General.UI.HTML.Basics", "_SRC\General.UI.HTML.Basics\General.UI.HTML.Basics.csproj", "{4135017A-473F-4BB6-A2FC-9D090D7FD901}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE33E8E4-8887-435C-B2CF-14942F9C6608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE33E8E4-8887-435C-B2CF-14942F9C6608}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE33E8E4-8887-435C-B2CF-14942F9C6608}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE33E8E4-8887-435C-B2CF-14942F9C6608}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4135017A-473F-4BB6-A2FC-9D090D7FD901}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4135017A-473F-4BB6-A2FC-9D090D7FD901}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4135017A-473F-4BB6-A2FC-9D090D7FD901}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4135017A-473F-4BB6-A2FC-9D090D7FD901}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BE33E8E4-8887-435C-B2CF-14942F9C6608} = {8786168A-A694-4E30-B199-3244C07467C8}
+		{4135017A-473F-4BB6-A2FC-9D090D7FD901} = {56DB61D0-44F3-4338-B485-BDF648794EC7}
+	EndGlobalSection
+EndGlobal
