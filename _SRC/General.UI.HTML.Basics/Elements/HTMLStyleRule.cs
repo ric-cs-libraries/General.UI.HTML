@@ -21,7 +21,7 @@ public class HTMLStyleRule
 
     public string GetAsString()
     {
-        var result = $"{Selectors} {{{GetStyleAttributesAsString()}}}";
+        var result = $"{Selectors} {{{GetStyleAttributesAsString()}}}\n";
         return result;
     }
 
