@@ -1,7 +1,0 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-	<ItemGroup>
-		<ProjectReference Include="../../_SRC/General.UI.HTML.Basics/General.UI.HTML.Basics.csproj" />
-	</ItemGroup>
-
-</Project>
