@@ -1,4 +1,6 @@
-﻿namespace General.UI.HTML.Basics.Attributes.Styles;
+﻿using General.UI.HTML.Basics.Attributes.Styles;
+
+namespace General.UI.HTML.Basics.Attributes;
 
 public class HTMLStyleAttribute : HTMLAttribute
 {

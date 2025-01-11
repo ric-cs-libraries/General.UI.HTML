@@ -14,7 +14,7 @@ public class HTMLClassAttribute : HTMLAttribute
 
     public HTMLClassAttribute AddClass(string className)
     {
-        Value += $"{className} ";
+        Value += $" {className}";
         return this;
     }
 

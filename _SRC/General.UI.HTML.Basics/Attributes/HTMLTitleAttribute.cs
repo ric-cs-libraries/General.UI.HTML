@@ -16,11 +16,11 @@ public class HTMLTitleAttribute : HTMLAttribute
 
     public override string GetAsString()
     {
-        if (Value.Contains(ValueQuotingChar))
+        if (Value.Contains(this.ValueQuotingChar))
         {
-            Value = Value.Replace(ValueQuotingChar, "`");
+            Value = Value.Replace(this.ValueQuotingChar, "`");
         }
-        var result = $"{HTML_TITLE_ATTRIBUTE_KEY}={ValueQuotingChar}{Value.Trim()}{ValueQuotingChar}";
+        var result = $"{HTML_TITLE_ATTRIBUTE_KEY}={this.ValueQuotingChar}{Value.Trim()}{this.ValueQuotingChar}";
         return result;
     }
 

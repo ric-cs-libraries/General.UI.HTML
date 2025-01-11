@@ -2,7 +2,7 @@
 
 public class HTMLBodyTag : HTMLNodeTag
 {
-    public HTMLBodyTag(string? id = null) : base("BODY", id)
+    public HTMLBodyTag() : base("BODY")
     {
     }
 }

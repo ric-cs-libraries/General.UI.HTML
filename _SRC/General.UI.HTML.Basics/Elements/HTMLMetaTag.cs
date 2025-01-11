@@ -1,16 +1,20 @@
 ﻿using General.UI.HTML.Basics.Attributes;
+using General.UI.HTML.Basics.Elements.ErrorHandling;
 
 namespace General.UI.HTML.Basics.Elements;
 
 public class HTMLMetaTag : HTMLLeafTag
 {
-    //<meta charset='iso-8859-1'/>
-    private const string CHARSET_ATTRIBUTE_KEY = "charset";
+    //<meta charset="iso-8859-1"/>
+    public const string CHARSET_ATTRIBUTE_KEY = "charset";
 
-    //<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
-    private const string HTTPEQUIV_ATTRIBUTE_KEY = "http-equiv";
-    private const string HTTPEQUIV_DEFAULT_VALUE = "Content-Type";
-    private const string CONTENT_ATTRIBUTE_KEY = "content";
+    //<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+    public const string HTTPEQUIV_ATTRIBUTE_KEY = "http-equiv";
+    public const string HTTPEQUIV_DEFAULT_VALUE = "Content-Type";
+    public const string CONTENT_ATTRIBUTE_KEY = "content";
+
+    public string? Charset { get; }
+    public string? ContentType { get; }
 
 
     private readonly HTMLAttribute charsetAttribute = new(CHARSET_ATTRIBUTE_KEY, string.Empty);
@@ -20,41 +24,46 @@ public class HTMLMetaTag : HTMLLeafTag
 
     public HTMLMetaTag(string? charset = null, string? contentType = null) : base("META")
     {
-        if (contentType is null)
+        if (string.IsNullOrWhiteSpace(charset) && string.IsNullOrWhiteSpace(contentType))
         {
-            if (charset is not null)
+            throw new HTMLMetaTagConstructorMustReceiveAtLeastOneParamException();
+        }
+
+        Charset = charset;
+        ContentType = contentType;
+        if (ContentType is null)
+        {
+            if (Charset is not null)
             {
-                SetSimpleCharset(charset);
+                SetSimpleCharset();
             }
         }
         else
         {
-            SetContentypeAndCharset(contentType, charset);
+            SetContentypeAndCharset();
         }
 
     }
-    public HTMLMetaTag SetSimpleCharset(string charset)
+
+    private void SetSimpleCharset()
     {
         AddAttributeIfNotExists(charsetAttribute);
-        charsetAttribute.Value = charset;
-        return this;
+        charsetAttribute.Value = Charset!;
     }
 
-    private HTMLMetaTag SetContentypeAndCharset(string contentType, string? charset = null)
+    private void SetContentypeAndCharset()
     {
         AddAttributeIfNotExists(httpEquivAttribute);
         AddAttributeIfNotExists(contentAttribute);
 
-        List<string> contentAsList = new() { contentType };
-        if (charset is not null)
+        List<string> contentAsList = new() { ContentType! };
+        if (Charset is not null)
         {
-            contentAsList.Add($"charset={charset}");
+            contentAsList.Add($"{CHARSET_ATTRIBUTE_KEY}={Charset}");
         }
 
         string content = string.Join("; ", contentAsList);
         contentAttribute.Value = content;
-
-        return this;
     }
 
 }

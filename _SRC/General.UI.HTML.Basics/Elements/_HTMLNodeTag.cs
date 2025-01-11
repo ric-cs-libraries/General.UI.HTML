@@ -17,7 +17,7 @@ public class HTMLNodeTag : HTMLTag
     {
     }
 
-    public HTMLNodeTag RemoveChildren()
+    public virtual HTMLNodeTag RemoveChildren()
     {
         Children.Clear();
         return this;

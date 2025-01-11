@@ -4,7 +4,7 @@ namespace General.UI.HTML.Basics.Elements;
 
 public class HTMLText : HTMLElement
 {
-    public string Text { get; private set; } = string.Empty;
+    public string Text { get; set; } = string.Empty;
 
     public HTMLText(string? text = null) : base()
     {
@@ -17,12 +17,6 @@ public class HTMLText : HTMLElement
     public HTMLText AddText(string text)
     {
         Text += text;
-        return this;
-    }
-
-    public HTMLText SetText(string text)
-    {
-        Text = text;
         return this;
     }
 

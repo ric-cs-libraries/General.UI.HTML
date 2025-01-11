@@ -3,7 +3,9 @@
 public class HTMLAttribute
 {
     public string KeyName { get; }
-    public string Value { get; set; }
+
+    private string _value = "";
+    public string Value { get => _value.Trim(); set => _value = value.Trim(); }
     protected virtual string ValueQuotingChar => "\"";
 
     public HTMLAttribute(string keyName, string value)

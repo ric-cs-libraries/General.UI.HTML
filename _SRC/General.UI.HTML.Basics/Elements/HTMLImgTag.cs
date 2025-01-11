@@ -4,23 +4,23 @@ namespace General.UI.HTML.Basics.Elements;
 
 public class HTMLImgTag : HTMLLeafTag
 {
-    private const string URL_ATTRIBUTE_KEY = "src";
+    public const string URL_ATTRIBUTE_KEY = "src";
 
     private readonly HTMLAttribute urlAttribute = new(URL_ATTRIBUTE_KEY, string.Empty);
 
+    public string Url
+    {
+        get => urlAttribute.Value;
+        set => urlAttribute.Value = value;
+    }
+
     public HTMLImgTag(string? url = null) : base("IMG")
     {
-        AddAttribute(urlAttribute);
+        AddOrSetAttribute(urlAttribute);
 
         if (url is not null)
         {
-            SetUrl(url);
+            Url = url;
         }
-    }
-
-    public HTMLImgTag SetUrl(string url)
-    {
-        urlAttribute.Value = url;
-        return this;
     }
 }

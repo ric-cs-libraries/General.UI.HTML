@@ -19,10 +19,10 @@ public abstract class HTMLTag : HTMLElement
 
     protected HTMLTag(string tagName, string? id = null) : base()
     {
-        TagName = tagName;
+        TagName = tagName.ToLower();
         if (id is not null)
         {
-            AddAttribute(new HTMLAttribute("id", id));
+            AddOrSetAttribute(new HTMLAttribute("id", id));
         }
     }
 
@@ -63,29 +63,17 @@ public abstract class HTMLTag : HTMLElement
         return this;
     }
 
-    public HTMLTag AddAttributes(List<HTMLAttribute> attributes)
+    public HTMLTag AddOrSetAttributes(List<HTMLAttribute> attributes)
     {
         attributes.ForEach(a =>
         {
-            AddAttribute(a);
+            AddOrSetAttribute(a);
         });
         return this;
     }
 
-
-    //Si l'attribut existe déjà, alors on ne fait rien.
-    public HTMLTag AddAttributeIfNotExists(HTMLAttribute attribute)
-    {
-        HTMLAttribute? attr = GetAttributeByKey(attribute.KeyName);
-        if (attr is null)
-        {
-            Attributes.Add(attribute);
-        }
-        return this;
-    }
-
     //Si l'attribut existe déjà, alors sa valeur est éventuellement updatée.
-    public HTMLTag AddAttribute(HTMLAttribute attribute)
+    public HTMLTag AddOrSetAttribute(HTMLAttribute attribute)
     {
         HTMLAttribute? attr = GetAttributeByKey(attribute.KeyName);
         if (attr is null)
@@ -95,6 +83,27 @@ public abstract class HTMLTag : HTMLElement
         else
         {
             attr.Value = attribute.Value;
+        }
+        return this;
+    }
+
+    //Si un attribut existe déjà, alors on ne l'ajoute pas.
+    public HTMLTag AddAttributesIfNotExists(List<HTMLAttribute> attributes)
+    {
+        attributes.ForEach(a =>
+        {
+            AddAttributeIfNotExists(a);
+        });
+        return this;
+    }
+
+    //Si l'attribut existe déjà, alors on ne fait rien.
+    public HTMLTag AddAttributeIfNotExists(HTMLAttribute attribute)
+    {
+        HTMLAttribute? attr = GetAttributeByKey(attribute.KeyName);
+        if (attr is null)
+        {
+            Attributes.Add(attribute);
         }
         return this;
     }
@@ -110,7 +119,7 @@ public abstract class HTMLTag : HTMLElement
             if (htmlAttribute is null)
             {
                 htmlStyleAttribute = new();
-                AddAttribute(htmlStyleAttribute);
+                AddOrSetAttribute(htmlStyleAttribute);
             }
             else
             {
@@ -136,7 +145,7 @@ public abstract class HTMLTag : HTMLElement
             if (htmlAttribute is null)
             {
                 htmlClassAttribute = new();
-                AddAttribute(htmlClassAttribute);
+                AddOrSetAttribute(htmlClassAttribute);
             }
             else
             {
@@ -159,7 +168,7 @@ public abstract class HTMLTag : HTMLElement
             if (htmlAttribute is null)
             {
                 htmlTitleAttribute = new();
-                AddAttribute(htmlTitleAttribute);
+                AddOrSetAttribute(htmlTitleAttribute);
             }
             else
             {

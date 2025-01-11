@@ -2,18 +2,18 @@
 
 namespace General.UI.HTML.Basics.Elements;
 
-public class HTMLStyleRule
+public class StyleRule
 {
     public string Selectors { get; }
     public List<StyleAttribute> StyleAttributes { get; }
 
-    public HTMLStyleRule(string selectors, List<StyleAttribute>? styleAttributes = null)
+    public StyleRule(string selectors, List<StyleAttribute>? styleAttributes = null)
     {
         Selectors = selectors;
         StyleAttributes = styleAttributes ?? new();
     }
 
-    public HTMLStyleRule AddStyleAttribute(StyleAttribute styleAttribute)
+    public StyleRule AddStyleAttribute(StyleAttribute styleAttribute)
     {
         StyleAttributes.Add(styleAttribute);
         return this;
